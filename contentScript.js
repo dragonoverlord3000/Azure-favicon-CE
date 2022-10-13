@@ -86,6 +86,14 @@ iconMapperSubtitleText = {
     "DNS zone": "https://azure-favicons-bucket.s3.amazonaws.com/Private+DNS+zones.ico",
     "NAT gateway": "https://azure-favicons-bucket.s3.amazonaws.com/NAT+gateways.ico",
     "Firewall Policy": "https://azure-favicons-bucket.s3.amazonaws.com/Firewall+Policies.ico",
+    "Local network gateway": "https://azure-favicons-bucket.s3.amazonaws.com/Local+network+gateways.ico",
+    "Network security group (classic)": "https://azure-favicons-bucket.s3.amazonaws.com/Network+security+groups.ico",
+    "Synapse private link hub": "https://azure-favicons-bucket.s3.amazonaws.com/Azure+Synapse+Analytics+(private+link+hubs).ico",
+    "Network Watcher": "https://azure-favicons-bucket.s3.amazonaws.com/Network+Watcher.ico",
+    "Public IP address": "https://azure-favicons-bucket.s3.amazonaws.com/Public+IP+addresses.ico",
+    "Application security group": "https://azure-favicons-bucket.s3.amazonaws.com/Application+security+groups.ico",
+    "Private DNS zone": "https://azure-favicons-bucket.s3.amazonaws.com/Private+DNS+zones.ico",
+    "Virtual WAN": "https://azure-favicons-bucket.s3.amazonaws.com/Virtual+WANs.ico",
 };
 
 // Most of the parameters are the same as the "iconMapperSubtitleText", but with an added 's'
@@ -170,6 +178,20 @@ iconMapperTitleText = {
     "Create network address translation (NAT) gateway": "https://azure-favicons-bucket.s3.amazonaws.com/NAT+gateways.ico",
     "Firewall Policies": "https://azure-favicons-bucket.s3.amazonaws.com/Firewall+Policies.ico",
     "Create an Azure Firewall Policy": "https://azure-favicons-bucket.s3.amazonaws.com/Firewall+Policies.ico",
+    "Local network gateways": "https://azure-favicons-bucket.s3.amazonaws.com/Local+network+gateways.ico",
+    "Network security groups (classic)": "https://azure-favicons-bucket.s3.amazonaws.com/Network+security+groups.ico",
+    "Create network security group": "https://azure-favicons-bucket.s3.amazonaws.com/Network+security+groups.ico",
+    "Load balancing": "https://azure-favicons-bucket.s3.amazonaws.com/Load+balancing+-+help+me+choose.ico",
+    "Azure Synapse Analytics (private link hubs)": "https://azure-favicons-bucket.s3.amazonaws.com/Azure+Synapse+Analytics+(private+link+hubs).ico",
+    "Create Synapse private link hub": "https://azure-favicons-bucket.s3.amazonaws.com/Azure+Synapse+Analytics+(private+link+hubs).ico",
+    "Network Watcher": "https://azure-favicons-bucket.s3.amazonaws.com/Network+Watcher.ico",
+    "Public IP addresses": "https://azure-favicons-bucket.s3.amazonaws.com/Public+IP+addresses.ico",
+    "Application security groups": "https://azure-favicons-bucket.s3.amazonaws.com/Application+security+groups.ico",
+    "Create an application security group": "https://azure-favicons-bucket.s3.amazonaws.com/Application+security+groups.ico",
+    "Private DNS zones": "https://azure-favicons-bucket.s3.amazonaws.com/Private+DNS+zones.ico",
+    "Create Private DNS zone": "https://azure-favicons-bucket.s3.amazonaws.com/Private+DNS+zones.ico",
+    "Virtual WANs": "https://azure-favicons-bucket.s3.amazonaws.com/Virtual+WANs.ico",
+    "Create WAN": "https://azure-favicons-bucket.s3.amazonaws.com/Virtual+WANs.ico",
 };
 
 // The default fallback method
@@ -1006,14 +1028,12 @@ function iconMapper() {
     for (const subtitleText of subtitleTexts) {
         subText = subtitleText.textContent.toLowerCase().replace(/\s/g, "");
         if (iconMapperAllText.hasOwnProperty(subText)) {
-            console.log("Changing favicon to: " + subText)
             const element = iconMapperAllText[subText];
-            console.log(element)
             changeFavicon2(element);
             return;
         } else if (iconMapperAllText.hasOwnProperty(subText + "s")) {
             const element = iconMapperAllText[subText + "s"];
-            changeFavicon2(element)
+            changeFavicon2(element);
             return;
         }
     }
@@ -1022,11 +1042,11 @@ function iconMapper() {
         tiText = titleText.textContent.toLowerCase().replace(/\s/g, "");
         if (iconMapperAllText.hasOwnProperty(tiText)) {
             const element = iconMapperAllText[tiText];
-            changeFavicon2(element)
+            changeFavicon2(element);
             return;
         } else if (iconMapperAllText.hasOwnProperty(tiText + "s")) {
             const element = iconMapperAllText[tiText + "s"];
-            changeFavicon2(element)
+            changeFavicon2(element);
             return;
         }
     }
