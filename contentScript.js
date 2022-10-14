@@ -20,13 +20,7 @@ function changeFavicon(src) {
     }
     document.head.appendChild(link);
 }
-function changeFavicon2(src) {
-    var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
-    link.type = 'image/x-icon';
-    link.rel = 'shortcut icon';
-    link.href = src;
-    document.getElementsByTagName('head')[0].appendChild(link);
-}
+
 
 //// Structure for iconmappers: {"Parameter to search for in subtitle": "favicon url"}
 
