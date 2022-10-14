@@ -1,6 +1,6 @@
 // // Set alarm for every second
 chrome.alarms.create({
-    periodInMinutes: 1/ 120
+    periodInMinutes: 1/ 60
 });
 
 // When chromextension is installed
