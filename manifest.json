@@ -3,6 +3,7 @@
     "name": "Azure Favicons",
     "version": "1.0.0",
     "icons": {},
+    "description": "Sets favicons to match the azure service you're working with on a given tab",
     "action": {
         "default_title": "Azure Favicons",
         "default_popup": "popup/popup.html"

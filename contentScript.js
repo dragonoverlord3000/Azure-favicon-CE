@@ -32,6 +32,8 @@ iconMapperSubtitleText = {
     "Static Web App": "https://azure-favicons-bucket.s3.amazonaws.com/Static+Web+Apps.ico",
     // Logic app
     "Logic App": "https://azure-favicons-bucket.s3.amazonaws.com/Logic+app+designer.ico",
+    "Workflow": "https://azure-favicons-bucket.s3.amazonaws.com/Logic+app+designer.ico",
+    "Logic App (Standard)": "https://azure-favicons-bucket.s3.amazonaws.com/Logic+app+designer.ico",
     "Logic app": "https://azure-favicons-bucket.s3.amazonaws.com/Logic+app+designer.ico",
     // Key vault
     "Key vault": "https://azure-favicons-bucket.s3.amazonaws.com/Key+vault.ico",
@@ -104,6 +106,7 @@ iconMapperSubtitleText = {
     "Reserved IP address (classic)": "https://azure-favicons-bucket.s3.amazonaws.com/Public+IP+addresses.ico",
     "Azure Cosmos DB account": "https://azure-favicons-bucket.s3.amazonaws.com/Azure+Cosmos+DB.ico",
     "Azure Active Directory": "https://azure-favicons-bucket.s3.amazonaws.com/Azure+Active+Directory.ico",
+    "Azure Cosmos DB for MongoDB account": "https://azure-favicons-bucket.s3.amazonaws.com/Azure+Cosmos+DB.ico",
 };
 
 // Most of the parameters are the same as the "iconMapperSubtitleText", but with an added 's'
@@ -222,6 +225,7 @@ iconMapperTitleText = {
     "Reserved IP addresses (classic)": "https://azure-favicons-bucket.s3.amazonaws.com/Public+IP+addresses.ico",
     "Storage accounts": "https://azure-favicons-bucket.s3.amazonaws.com/Storage+account.ico",
     "Azure Cosmos DB": "https://azure-favicons-bucket.s3.amazonaws.com/Azure+Cosmos+DB.ico",
+    "Azure Cosmos DB for MongoDB": "https://azure-favicons-bucket.s3.amazonaws.com/Azure+Cosmos+DB.ico",
     "App registrations": "https://azure-favicons-bucket.s3.amazonaws.com/App+registrations.ico",
 };
 
