@@ -3,14 +3,14 @@
     "name": "Azure Favicons",
     "version": "1.0.0",
     "icons": {
-        "16": "azure.png",
-        "32": "azure.png",
-        "48": "azure.png",
-        "128": "azure.png"
+        "16": "icon.png",
+        "32": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png"
     },
     "description": "Sets favicons to match the azure service you're working with on a given tab",
     "action": {
-        "default_icon": "azure.png",
+        "default_icon": "icon.png",
         "default_title": "Azure Favicons",
         "default_popup": "popup/popup.html"
     },
