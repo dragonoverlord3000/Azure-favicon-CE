@@ -1,11 +1,23 @@
-// // Set alarm for every second
-chrome.alarms.create({
-    periodInMinutes: 1/ 60
-});
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+    if ((tab.url).includes("https://portal.azure.com/")) {
+        chrome.scripting.executeScript({
+            "target": {"tabId": tab.id},
+            "files": ["contentScript.js"]
+        })
+} }); 
+ 
+ chrome.tabs.onActivated.addListener((activeInfo) => {
+    chrome.tabs.get(activeInfo.tabId, (tab) => {
+        if ((tab.url).includes("https://portal.azure.com/")) {
+            chrome.scripting.executeScript({
+                "target": {"tabId": tab.id},
+                "files": ["contentScript.js"]
+            });
+        };
+     });
+ }); 
 
-// // Run updater every second
-chrome.alarms.onAlarm.addListener((alarm) => {
-    // Get all tabs currently open
+ chrome.runtime.onInstalled.addListener((details) => {
     chrome.tabs.query({}, (tabs) => {
         
         for (tab of tabs) {
@@ -19,5 +31,4 @@ chrome.alarms.onAlarm.addListener((alarm) => {
             }
         }
     });
-})
-;
+});

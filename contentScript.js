@@ -1,13 +1,3 @@
-// console.log(`Current URL = ${window.location.href}`)
-
-/*
-    - TODO:
-1. Update on url-change, not using alarm API
-
-2. onInstalled query everything
-*/
-
-
 // Function for changing favicon
 function changeFavicon(src) {
     var link = document.createElement('link'),
@@ -238,11 +228,12 @@ var titleTexts = [].slice.call(document.getElementsByClassName("fxs-blade-title-
 titleTexts.reverse()
 
 function iconMapper() {
-    // If homepage
-    if (location.href.includes("portal.azure.com/#home") || location.href.includes("portal.azure.com/#allservices")) {
+    // If homepage or allservices page
+    if ((window.location.href).includes("portal.azure.com/#home") || (window.location.href).includes("portal.azure.com/#allservices")) {
         // Change to default logo
         changeFavicon("https://azure-favicons-bucket.s3.amazonaws.com/home_400x400.ico");
-    }
+        return;
+    };
 
     // If site has subtitleText - change to match
     for (const subtitleText of subtitleTexts) {
@@ -252,7 +243,7 @@ function iconMapper() {
             changeFavicon(element);
             return;
         } 
-    }
+    };
 
     // If site has TitleText - change to match
     for (const titleText of titleTexts) {
@@ -262,10 +253,10 @@ function iconMapper() {
             changeFavicon(element);
             return;
         } 
-    }
-
-}
-iconMapper()
-
+    };
+};
+setTimeout(() => {
+    iconMapper();
+  }, 500)
 
 // Otherwise keep current logo until page refresh or until a new page with known favicon is fetched

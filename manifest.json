@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Azure Favicons",
-    "version": "1.0.0",
+    "version": "1.0.7",
     "icons": {
         "16": "icon.png",
         "32": "icon.png",
@@ -23,6 +23,6 @@
     "background": {
         "service_worker": "background.js"
     },
-    "permissions": ["tabs", "scripting", "alarms"],
+    "permissions": ["tabs", "scripting"],
     "host_permissions": ["https://portal.azure.com/*"]
 }
