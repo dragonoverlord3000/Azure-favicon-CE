@@ -114,7 +114,7 @@ function changeFavicon2(src) {
     var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
     link.rel = 'shortcut icon';
     link.href = "data:image/svg+xml," + src;
-    // link.removeAttribute("type");
+    link.removeAttribute("type");
     document.getElementsByTagName('head')[0].appendChild(link);
 };
 
@@ -144,6 +144,9 @@ let title_id = document.getElementsByClassName("fxs-blade-header-icon")[0].first
 let blade_icon = document.getElementById(title_id.split("#")[1]).parentNode.parentNode.outerHTML;
 
 svg_out = convertSVG(blade_icon, returnDefs);
+svg_out = encodeURIComponent(svg_out);
+
+setTimeout(() => {},500)
 
 changeFavicon2(svg_out)
 
