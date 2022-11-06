@@ -136,9 +136,11 @@ async function changeFaviconToSVG() {
 	}
 
 	// Wait for a blade icon to appear
-	let title_id = await document.getElementsByClassName("fxs-blade-header-icon")[0].firstChild.firstChild.href.baseVal;
+	// document.getElementsByClassName("fxc-gcflink-icon")[0].firstChild.getElementsByTagName("use")[0].href
+	let icon_id = await document.getElementsByClassName("fxs-blade-header-icon")[0].firstChild.firstChild.href.baseVal;
+	
 	// Find the corresponding svg element
-	let blade_icon = document.getElementById(title_id.split("#")[1]).parentNode.parentNode.outerHTML;
+	let blade_icon = document.getElementById(icon_id.split("#")[1]).parentNode.parentNode.outerHTML;
 	
 	// Convert svg to independent format
 	let svg_out = convertSVG(blade_icon, returnDefs);
