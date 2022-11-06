@@ -16,10 +16,10 @@ function changeFavicon2SVG(src) {
     var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
     link.rel = 'shortcut icon';
     link.href = "data:image/svg+xml," + src;
-	link.class = "dynamic favicon";
     link.removeAttribute("type");
     document.getElementsByTagName('head')[0].appendChild(link);
 };
+
 
 // convertSVG from "https://chrome.google.com/webstore/detail/amazing-icon-downloader/kllljifcjfleikiipbkdcgllbllahaob"
 function convertSVG(iconSVG, defs) {
@@ -136,20 +136,24 @@ async function changeFaviconToSVG() {
 	}
 
 	// Wait for a blade icon or other icon to load
-	const promise_blade_icon = new Promise((resolve) => {resolve(document.getElementsByClassName("fxs-blade-header-icon")[0].firstChild.firstChild.href.baseVal)});
+	const promise_blade_icon = new Promise((resolve) => {
+		let blade_icon = document.getElementsByClassName("fxs-blade-header-icon");
+		// Get the most recent blade-icon in case of nested structure
+		resolve(blade_icon[blade_icon.length - 1].firstChild.firstChild.href.baseVal);
+	});
 	const promise_list_icon = new Promise((resolve) => {resolve(document.getElementsByClassName("fxc-gcflink-icon")[0].firstChild.getElementsByTagName("use")[0].href.baseVal)});
 	const promise_empty_icon = new Promise((resolve) => {resolve(document.getElementsByClassName("ext-hubs-artbrowse-emptyicon msportalfx-svg-disabled")[0].firstChild.getElementsByTagName("use")[0].href.baseVal)});
 	const promises = [promise_blade_icon, promise_list_icon, promise_empty_icon];
 	Promise.any(promises).then(icon_id => {
 		// Find the corresponding svg element
-		let blade_icon = document.getElementById(icon_id.split("#")[1]).parentNode.parentNode.outerHTML;
+		let icon_html = document.getElementById(icon_id.split("#")[1]).parentNode.parentNode.outerHTML;
 		
 		// Convert svg to independent format
-		let svg_out = convertSVG(blade_icon, returnDefs);
+		let svg_out = convertSVG(icon_html, returnDefs);
 		// Encode the svg for embedding purposes
 		svg_out = encodeURIComponent(svg_out);
 		// Change favicon
-		changeFavicon2(svg_out);
+		changeFavicon2SVG(svg_out);
 	}).catch((error) => {
 		console.log(error);
 	});	
