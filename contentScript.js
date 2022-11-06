@@ -135,22 +135,29 @@ async function changeFaviconToSVG() {
 		}
 	}
 
-	// Wait for a blade icon to appear
-	// document.getElementsByClassName("fxc-gcflink-icon")[0].firstChild.getElementsByTagName("use")[0].href
-	let icon_id = await document.getElementsByClassName("fxs-blade-header-icon")[0].firstChild.firstChild.href.baseVal;
-	
-	// Find the corresponding svg element
-	let blade_icon = document.getElementById(icon_id.split("#")[1]).parentNode.parentNode.outerHTML;
-	
-	// Convert svg to independent format
-	let svg_out = convertSVG(blade_icon, returnDefs);
-	// Encode the svg for embedding purposes
-	svg_out = encodeURIComponent(svg_out);
-	// Change favicon
-	changeFavicon2(svg_out);
+	// Wait for a blade icon or other icon to load
+	const promise_blade_icon = new Promise((resolve) => {resolve(document.getElementsByClassName("fxs-blade-header-icon")[0].firstChild.firstChild.href.baseVal)});
+	const promise_list_icon = new Promise((resolve) => {resolve(document.getElementsByClassName("fxc-gcflink-icon")[0].firstChild.getElementsByTagName("use")[0].href.baseVal)});
+	const promise_empty_icon = new Promise((resolve) => {resolve(document.getElementsByClassName("ext-hubs-artbrowse-emptyicon msportalfx-svg-disabled")[0].firstChild.getElementsByTagName("use")[0].href.baseVal)});
+	const promises = [promise_blade_icon, promise_list_icon, promise_empty_icon];
+	Promise.any(promises).then(icon_id => {
+		// Find the corresponding svg element
+		let blade_icon = document.getElementById(icon_id.split("#")[1]).parentNode.parentNode.outerHTML;
+		
+		// Convert svg to independent format
+		let svg_out = convertSVG(blade_icon, returnDefs);
+		// Encode the svg for embedding purposes
+		svg_out = encodeURIComponent(svg_out);
+		// Change favicon
+		changeFavicon2(svg_out);
+	}).catch((error) => {
+		console.log(error);
+	});	
 }
 
 // Call the change favicon function
-changeFaviconToSVG();
+setTimeout(() => {
+	changeFaviconToSVG();
+}, 750)
 
 
