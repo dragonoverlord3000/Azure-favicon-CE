@@ -110,7 +110,7 @@ function convertSVG(iconSVG, defs) {
 // Change favicon to match
 async function changeFaviconToSVG() {
 	// If homepage, change to standard icon
-	if (location.href == "https://portal.azure.com/#home" || location.href == "https://portal.azure.com/#allservices") {
+	if (location.href == "https://portal.azure.com/#home" || location.href == "https://portal.azure.com/#allservices" || location.href == "https://portal.azure.com/#allservices/category/All") {
 		changeFavicon("https://azure-favicons-bucket.s3.amazonaws.com/azure.ico");
 	}
 
