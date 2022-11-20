@@ -9,7 +9,6 @@ Which can be confusing and annoying to navigate! But using the <i>Azure Favicon<
 
 
 ## To Do
-
 1. Fix cases where the bladeicon is an image - not an svg element:
 ![case1](https://github.com/dragonoverlord3000/Azure-favicon-CE/blob/master/images/case1.png?raw=true)
 
