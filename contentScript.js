@@ -1,3 +1,6 @@
+// List of home/base-urls
+HOME_URLS = ["https://portal.azure.com/#home", "https://portal.azure.com/#allservices", "https://portal.azure.com/#allservices/category/All", "https://endpoint.microsoft.com/#home"]
+
 // Change favicon function (to ico)
 function changeFavicon(src) {
     var link = document.createElement('link'),
@@ -108,9 +111,9 @@ function convertSVG(iconSVG, defs) {
 }
 
 // Change favicon to match
-async function changeFaviconToSVG() {
+async function iconMapperSVGs() {
 	// If homepage, change to standard icon
-	if (location.href == "https://portal.azure.com/#home" || location.href == "https://portal.azure.com/#allservices" || location.href == "https://portal.azure.com/#allservices/category/All") {
+	if (HOME_URLS.includes(location.href)) {
 		changeFavicon("https://azure-favicons-bucket.s3.amazonaws.com/azure.ico");
 	}
 
@@ -159,9 +162,104 @@ async function changeFaviconToSVG() {
 	});	
 }
 
-// Call the change favicon function
-setTimeout(() => {
-	changeFaviconToSVG();
-}, 750)
+// Icon mapper portal - sometimes a delay is necessary for the site to load the SVG
+function iconMapperPortal() {
+	// If the site loads quickly
+    setTimeout(iconMapperSVGs, 200);
+	// Works most of the time
+    setTimeout(iconMapperSVGs, 500);
+	// For slow connections
+    setTimeout(iconMapperSVGs, 800);
+	// Rare cases
+    // setTimeout(iconMapperSVGs, 1200);
+}
+
+// Map endpoint.microsoft.com favicons based on URL (there are only a few)
+function iconMapperEndpoint() {
+    // Url list
+    var url_list = (window.location.href).split("/");
+    // console.log(url_list);
+
+    ////////////////////////////
+    // All the overview menus //
+    ////////////////////////////
+
+    // Home
+    if ((window.location.href).includes("endpoint.microsoft.com/#home")) {
+        changeFavicon("https://azure-favicons-bucket.s3.amazonaws.com/endpointMicrosoft/Azure+home.ico");
+        return;
+    }
+
+    // Dashboard
+    else if (url_list.length > 4 && url_list[4] == "dashboard") {
+        changeFavicon("https://azure-favicons-bucket.s3.amazonaws.com/endpointMicrosoft/Dashboard.ico");
+        return;
+    }
+
+    // All services
+    else if (url_list.length > 5 && url_list[3] == "#allservices" && url_list[4] == "category" && url_list[5] == "All") {
+        changeFavicon("https://azure-favicons-bucket.s3.amazonaws.com/endpointMicrosoft/All+services.ico");
+        return;
+    }
+
+    // Devices
+    else if (url_list.length > 7 && url_list[5] == "DevicesMenu" && url_list[7].toLowerCase() == "overview") {
+        changeFavicon("https://azure-favicons-bucket.s3.amazonaws.com/endpointMicrosoft/Devices.ico");
+        return;
+    }
+
+    // Apps
+    else if (url_list.length > 7 && url_list[5] == "AppsMenu" && url_list[7].toLowerCase() == "overview") {
+        changeFavicon("https://azure-favicons-bucket.s3.amazonaws.com/endpointMicrosoft/Apps.ico");
+        return;
+    }
+
+    // Endpoint security
+    else if (url_list.length > 6 && url_list[5] == "SecurityManagementMenu") {
+        changeFavicon("https://azure-favicons-bucket.s3.amazonaws.com/endpointMicrosoft/Endpoint+security.ico");
+        return;
+    }
+
+    // Reports
+    else if (url_list.length > 6 && url_list[5] == "ReportingMenu" && url_list[7].toLowerCase() == "overview") {
+        changeFavicon("https://azure-favicons-bucket.s3.amazonaws.com/endpointMicrosoft/Reports.ico");
+        return;
+    }
+
+    // Users
+    else if (url_list.length > 7 && url_list[5] == "UserManagementMenuBlade" && url_list[7].toLowerCase() == "allusers") {
+        changeFavicon("https://azure-favicons-bucket.s3.amazonaws.com/endpointMicrosoft/Users.ico");
+        return;
+    }
+
+    // Groups
+    else if (url_list.length > 7 && url_list[5] == "GroupsManagementMenuBlade" && url_list[7].toLowerCase() == "allgroups") {
+        changeFavicon("https://azure-favicons-bucket.s3.amazonaws.com/endpointMicrosoft/Groups.ico");
+        return;
+    }
+
+    // Tenant admins
+    else if (url_list.length > 7 && url_list[5] == "TenantAdminMenu" && url_list[7].toLowerCase() == "tenantstatus") {
+        changeFavicon("https://azure-favicons-bucket.s3.amazonaws.com/endpointMicrosoft/Tenant+administration.ico");
+        return;
+    }
+
+    // Support menu
+    else if (url_list.length > 7 && url_list[5] == "SupportMenu" && url_list[7].toLowerCase() == "troubleshooting") {
+        changeFavicon("https://azure-favicons-bucket.s3.amazonaws.com/endpointMicrosoft/Troubleshooting+%2B+support.ico");
+        return;
+    }
+
+	// Otherwise call iconMapperPortal - it still works on bladeicons
+	else {
+		iconMapperPortal();
+	}
+};
 
 
+// Call the favicon changer functions - based on the base url
+if ((window.location.href).includes("portal.azure.com")) {
+    iconMapperPortal();
+} else if ((window.location.href).includes("endpoint.microsoft.com")) {
+    iconMapperEndpoint();
+};
