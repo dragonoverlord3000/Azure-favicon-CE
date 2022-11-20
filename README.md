@@ -13,3 +13,6 @@ Which can be confusing and annoying to navigate! But using the <i>Azure Favicon<
 ![case1](https://github.com/dragonoverlord3000/Azure-favicon-CE/blob/master/images/case1.png?raw=true)
 
 2. Add support for more, related sites e.g. DevOps
+
+3. Add toggle button to popup.js for turning extension on/off at specific sites
+
