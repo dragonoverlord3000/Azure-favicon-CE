@@ -14,5 +14,5 @@ Which can be confusing and annoying to navigate! But using the <i>Azure Favicon<
 
 2. Add support for more, related sites e.g. DevOps
 
-3. Add toggle button to popup.js for turning extension on/off at specific sites
+3. Add toggle button to popup for turning extension on/off at specific sites
 
