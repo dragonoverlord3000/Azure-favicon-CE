@@ -16,3 +16,5 @@ Which can be confusing and annoying to navigate! But using the <i>Azure Favicon<
 
 3. Add toggle button to popup for turning extension on/off at specific sites
 
+4. Make firefox version (thanks 1superheld)
+
